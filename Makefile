@@ -4,7 +4,10 @@ no_random:
 all:
 	pytest
 
-verbose:
+v:
 	pytest -v
+
+v_no_random:
+	pytest -v -k 'not test_ex00'
 
 .PHONY: all 
