@@ -1,5 +1,6 @@
 import subprocess
 from ex01.format_ft_time import format_time, scientific_notation
+from ex02.find_ft_type import all_thing_is_obj
 
 def test_ex00():
 	result = subprocess.run(['python3', 'ex00/Hello.py'], capture_output=True, text=True)
@@ -26,6 +27,19 @@ def test_ex01():
 	assert scientific_notation(1234.0) == '1.23e+03'
 	assert scientific_notation(-1.0) == 'Invalid Value!'
 	assert scientific_notation(0) == 'Invalid Value!'
+
+def test_ex02():
+	result = subprocess.run(['python3', 'test_02.py'], capture_output=True, text=True)
+	expected_output = {
+		"List : <class 'list'>\n"
+		"Tuple : <class 'tuple'>\n"
+		"Set : <class 'set'>\n"
+		"Dict : <class 'dict'>\n"
+		"Brian is in the kitchen : <class 'str'>\n"
+		"Toto is in the kitchen : <class 'str'>\n"
+		"Type not found\n"
+		"42\n"
+	}
 
 
 if __name__ == "__main__":
