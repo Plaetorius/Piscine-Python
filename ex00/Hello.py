@@ -34,7 +34,12 @@ ft_list = ' '.join(ft_list).replace("tata!", "World!").split(' ')
 # ======================= TUPLE =======================
 
 # Tuples are unchangeable, thus, conversion to list and then back into a tuple
-ft_tuple = tuple(list(map(lambda word : (word if word != "toto!" else "France!"), ft_tuple)))
+
+# Map
+# ft_tuple = tuple(list(map(lambda word : (word if word != "toto!" else "France!"), ft_tuple)))
+
+# Comprehension List
+ft_tuple = tuple("France!" if word == "toto!" else word for word in ft_tuple)
 
 # ======================= SET =======================
 
