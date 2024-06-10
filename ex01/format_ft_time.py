@@ -1,6 +1,8 @@
 from datetime import datetime
 from time import time
 
+# Useful doc (see at the buttom for formatting): https://docs.python.org/3/library/datetime.html
+
 now = datetime.now()
 
 def format_time(time: float) -> str:
