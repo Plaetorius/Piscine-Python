@@ -12,31 +12,42 @@ def parser(string: str) -> dict:
     for c in string:
         if c.isupper():
             data['UPPER'] += 1
-        if c.islower():
+        elif c.islower():
             data['LOWER'] += 1
-        if c in "!\"#$%&')*+,-./:;<=>?@[\\]^_`{|}~":
+        elif c in "!\"#$%&')*+,-./:;<=>?@[\\]^_`{|}~":
             data['PUNCT'] += 1
-        if c in "\t\n\v\f\r ":
+        elif c in "\t\n\v\f\r ":
             data['SPACES'] += 1
-        if c in "0123456789":
+        elif c in "0123456789":
             data['DIGITS'] += 1
     return data
 
 
 def print_data(data: dict) -> None:
-    print(f"The text contains {sum(data.values())} characters:\n\
-{data['UPPER']} upper letters\n\
-{data['LOWER']} lower letters\n\
-{data['PUNCT']} punctuation marks\n\
-{data['SPACES']} spaces\n\
-{data['DIGITS']} digits")
+    """
+    Prints the characters data contained in the dictionary.
+    
+    Parameters:
+    data (dict): A dictionary containing information on the characters of a string.
+    
+    Returns:
+    str: The result of applying param_fun to n.
+    """
+    total_characters = sum(data.values())
+    print(f"The text contains {total_characters} characters:\n"
+          f"{data['UPPER']} upper letters\n"
+          f"{data['LOWER']} lower letters\n"
+          f"{data['PUNCT']} punctuation marks\n"
+          f"{data['SPACES']} spaces\n"
+          f"{data['DIGITS']} digits")
 
 
 def main():
     if (len(sys.argv) > 2):
         raise AssertionError("usage: python3 building.py <string>")
     if (len(sys.argv) < 2):
-        string = input("What is the text to count?\n")
+        print("What is the text to count?")
+        string = sys.stdin.readline()
     else:
         string = sys.argv[1]
     print_data(parser(string))
