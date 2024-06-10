@@ -2,6 +2,15 @@ import sys
 
 
 def parser(string: str) -> dict:
+    """
+    Parses a string, details what is each character.
+    
+    Parameters:
+    string (str): the string to parse
+    
+    Returns:
+    data (dict): pairs: <'type' of char (str), occurences in string (int)>
+    """
     data = {
         'UPPER': 0,
         'LOWER': 0,
@@ -31,7 +40,7 @@ def print_data(data: dict) -> None:
     data (dict): A dictionary containing information on the characters of a string.
     
     Returns:
-    str: The result of applying param_fun to n.
+    None
     """
     total_characters = sum(data.values())
     print(f"The text contains {total_characters} characters:\n"
@@ -43,6 +52,16 @@ def print_data(data: dict) -> None:
 
 
 def main():
+    """
+    Count the number of occurences of each 'type' of chars, in a string passed as
+    a parameter or requested if none is provided. Print the result.
+
+    Parameters:
+    (opt) sys.argv[1] (str): the string to be parsed.
+
+    Returns:
+    None
+    """
     if (len(sys.argv) > 2):
         raise AssertionError("usage: python3 building.py <string>")
     if (len(sys.argv) < 2):

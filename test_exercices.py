@@ -1,4 +1,5 @@
 import subprocess
+import sys
 from ex01.format_ft_time import format_time, scientific_notation
 from ex02.find_ft_type import all_thing_is_obj
 from ex05.building import main, print_data, parser
@@ -71,6 +72,12 @@ def test_ex05():
     process = lambda arg: subprocess.run(['python3', 'ex05/building.py', arg], capture_output=True, text=True)
     assert process("Hi").stdout == "The text contains 2 characters:\n1 upper letters\n1 lower letters\n0 punctuation marks\n0 spaces\n0 digits\n"
     assert process("Python 3.0, released in 2008, was a major revision that is not completely backward-compatible with earlier versions. Python 2 was discontinued with version 2.7.18 in 2020.").stdout == "The text contains 171 characters:\n2 upper letters\n121 lower letters\n8 punctuation marks\n25 spaces\n15 digits\n"
+    result = subprocess.run(['python3', 'ex05/building.py'], input="Hi!\n", capture_output=True, text=True)
+    assert result.stdout == "What is the text to count?\nThe text contains 4 characters:\n1 upper letters\n1 lower letters\n1 punctuation marks\n1 spaces\n0 digits\n"
+    result = subprocess.run(['python3', 'ex05/building.py'], input="\n", capture_output=True, text=True)
+    assert result.stdout == "What is the text to count?\nThe text contains 1 characters:\n0 upper letters\n0 lower letters\n0 punctuation marks\n1 spaces\n0 digits\n"
+    result = subprocess.run(['python3', 'ex05/building.py', "Multiple", "Strings"], capture_output=True, text=True)
+    assert "AssertionError: usage: python3 building.py <string>" in result.stderr
 
 if __name__ == "__main__":
     test_ex00()
@@ -78,3 +85,4 @@ if __name__ == "__main__":
     test_ex02()
     test_ex03()
     test_ex04()
+    test_ex05()
