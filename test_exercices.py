@@ -112,6 +112,12 @@ def test_06b():
     assert process('Salut\tComment\nCa\vVa\fToi\rMoi Ca\tClaque\n', '5').stdout == "['Comment', 'Claque']\n"
     assert process('Salut\tComment\nCa\vVa\fToi\rMoi Ca\tClaque\n', '0').stdout == "['Salut', 'Comment', 'Ca', 'Va', 'Toi', 'Moi', 'Ca', 'Claque']\n"
 
+def test_07():
+    process = lambda string: subprocess.run(['python3', 'ex07/sos.py', string], capture_output=True, text=True)
+    assert process('sos').stdout ==  "... --- ... \n"
+    assert process('hello how are you').stdout ==  ".... . .-.. .-.. --- / .... --- .-- / .- .-. . / -.-- --- ..- \n"
+    assert "AssertionError: the arguments are bad\n" in process('').stderr
+    assert "AssertionError: the arguments are bad\n" in process('h$llo').stderr
 
 if __name__ == "__main__":
     test_ex00()
@@ -122,4 +128,5 @@ if __name__ == "__main__":
     test_ex05()
     test_ex06a()
     test_ex06b()
+    test_ex07()
 
