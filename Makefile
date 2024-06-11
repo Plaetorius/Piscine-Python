@@ -17,4 +17,7 @@ vv_no_random:
 	pytest -vv -k 'not test_ex00'
 
 
+pynorm:
+	flake8 ex05 ex06
+
 .PHONY: all 
