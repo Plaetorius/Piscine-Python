@@ -3,6 +3,8 @@ import sys
 from ex01.format_ft_time import format_time, scientific_notation
 from ex02.find_ft_type import all_thing_is_obj
 from ex05.building import main, print_data, parser
+from ex06.ft_filter import ft_filter
+
 
 def test_ex00():
     result = subprocess.run(['python3', 'ex00/Hello.py'], capture_output=True, text=True)
@@ -30,6 +32,7 @@ def test_ex01():
     assert scientific_notation(-1.0) == 'Invalid Value!'
     assert scientific_notation(0) == 'Invalid Value!'
 
+
 def test_ex02():
     result = subprocess.run(['python3', 'test_02.py'], capture_output=True, text=True)
     expected_output =  "List : <class 'list'>\n" + \
@@ -42,6 +45,7 @@ def test_ex02():
         "42\n"
     assert result.stdout == expected_output
 
+
 def test_ex03():
     result = subprocess.run(['python3', 'test_03.py'], capture_output=True, text=True)
     expected_output = "Nothing: None <class 'NoneType'>\n" + \
@@ -52,6 +56,7 @@ def test_ex03():
         "Type not Found\n" + \
         "1\n"
     assert result.stdout == expected_output
+
 
 def test_ex04():
     process = lambda arg: subprocess.run(['python3', 'ex04/whatis.py', arg], capture_output=True, text=True)
@@ -68,6 +73,7 @@ def test_ex04():
     assert "AssertionError: argument is not an integer\n" in process('Hi!').stderr
     assert "AssertionError: more than one argument is provided\n" in subprocess.run(['python3', 'ex04/whatis.py', '12', '0'], capture_output=True, text=True).stderr
 
+
 def test_ex05():
     process = lambda arg: subprocess.run(['python3', 'ex05/building.py', arg], capture_output=True, text=True)
     assert process("Hi").stdout == "The text contains 2 characters:\n1 upper letters\n1 lower letters\n0 punctuation marks\n0 spaces\n0 digits\n"
@@ -79,6 +85,34 @@ def test_ex05():
     result = subprocess.run(['python3', 'ex05/building.py', "Multiple", "Strings"], capture_output=True, text=True)
     assert "AssertionError: usage: python3 building.py <string>" in result.stderr
 
+
+
+def test_06a():
+    functions = [
+        lambda n: n % 2,
+        lambda string: 'T' in string,
+        lambda boolean: True,
+        None,
+    ]
+    lists = [
+        [0, 1, 2, 3, 4, 5, 6],
+        ["My name is Tom", "Hello How Are You?", "I like potatoes"],
+        [1, True, 'HIIII', None, 0, 3.1415],
+        ["It's", "a mystery", list, "that", 1, "have", True, 42.0],
+    ]
+    for i in range(len(functions)):
+        assert list(filter(functions[i], lists[i])) == ft_filter(functions[i], lists[i])
+
+def test_06b():
+    process = lambda string, n: subprocess.run(['python3', 'ex06/filterstring.py', string, n], capture_output=True, text=True)
+    assert process('Hello the World', '4').stdout == "['Hello', 'World']\n"
+    assert process('Hello the World', '99').stdout == "[]\n"
+    assert "AssertionError: the arguments are bad\n" in process('3', 'Hello the World').stderr
+    assert "AssertionError: the arguments are bad\n" in process('', '').stderr
+    assert process('Salut\tComment\nCa\vVa\fToi\rMoi Ca\tClaque\n', '5').stdout == "['Comment', 'Claque']\n"
+    assert process('Salut\tComment\nCa\vVa\fToi\rMoi Ca\tClaque\n', '0').stdout == "['Salut', 'Comment', 'Ca', 'Va', 'Toi', 'Moi', 'Ca', 'Claque']\n"
+
+
 if __name__ == "__main__":
     test_ex00()
     test_ex01()
@@ -86,3 +120,6 @@ if __name__ == "__main__":
     test_ex03()
     test_ex04()
     test_ex05()
+    test_ex06a()
+    test_ex06b()
+

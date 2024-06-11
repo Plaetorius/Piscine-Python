@@ -4,10 +4,10 @@ import sys
 def parser(string: str) -> dict:
     """
     Parses a string, details what is each character.
-    
+
     Parameters:
     string (str): the string to parse
-    
+
     Returns:
     data (dict): pairs: <'type' of char (str), occurences in string (int)>
     """
@@ -35,10 +35,11 @@ def parser(string: str) -> dict:
 def print_data(data: dict) -> None:
     """
     Prints the characters data contained in the dictionary.
-    
+
     Parameters:
-    data (dict): A dictionary containing information on the characters of a string.
-    
+    data (dict): A dictionary containing information on the characters of a
+        string.
+
     Returns:
     None
     """
@@ -53,8 +54,8 @@ def print_data(data: dict) -> None:
 
 def main():
     """
-    Count the number of occurences of each 'type' of chars, in a string passed as
-    a parameter or requested if none is provided. Print the result.
+    Count the number of occurences of each 'type' of chars, in a string passed
+    as a parameter or requested if none is provided. Print the result.
 
     Parameters:
     (opt) sys.argv[1] (str): the string to be parsed.
