@@ -1,5 +1,6 @@
 import sys
 
+
 def main():
     '''Turns the string passed as a parameter in morse code
 
@@ -51,6 +52,7 @@ def main():
             "9": "----. ",
         }
     print("".join(morse_dict[c.upper()] for c in sys.argv[1]))
+
 
 if __name__ == "__main__":
     main()
