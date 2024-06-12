@@ -18,6 +18,6 @@ vv_no_random:
 
 
 norm:
-	flake8 ex05 ex06 ex07 ex08
+	flake8 ex05 ex06 ex07 ex08 ex09
 
 .PHONY: all 
