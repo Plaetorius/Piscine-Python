@@ -2,6 +2,7 @@ from PIL import Image
 import numpy as np
 import sys
 
+
 def ft_load(path: str) -> np.array:
     """
     Load an image, print its shape and its content in RGB format. Compatible
@@ -22,6 +23,7 @@ def ft_load(path: str) -> np.array:
         with Image.open(path) as img:
             array = np.array(img)
             print(f"The shape of the image is: {array.shape}")
+            print(array)
             return array
     except FileNotFoundError:
         print("File not found!")
