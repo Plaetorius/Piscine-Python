@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import sys
 
 
+
 def ft_rotate(image: np.array) -> np.array:
     print(image)
     return image
