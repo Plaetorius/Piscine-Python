@@ -39,9 +39,6 @@ def ft_zoom(image: np.array) -> np.array:
         zoomed_image = np.array(Image.fromarray(zoomed_region))
         zoomed_image = np.expand_dims(zoomed_image, axis=-1)
 
-        print(f"New shape after slicing: {zoomed_image.shape} or "
-              f"({zoomed_image.shape[0]}, {zoomed_image.shape[1]}):")
-        print(zoomed_image)
         plt.imshow(zoomed_image, cmap='gray')
         plt.show()
         # Show the original image
@@ -56,7 +53,13 @@ def ft_zoom(image: np.array) -> np.array:
 if __name__ == "__main__":
     try:
         if (len(sys.argv) == 2):
-            ft_zoom(ft_load(sys.argv[1]))
+            array = ft_load(sys.argv[1])
+            print(f"The shape of the image is: {array.shape}")
+            print(array)
+            zoomed_array = ft_zoom(array)
+            print(f"New shape after slicing: {zoomed_array.shape} or "
+                  f"({zoomed_array.shape[0]}, {zoomed_array.shape[1]})")
+            print(zoomed_array)
         else:
             print("Please a valid number of arguments")
     except Exception as e:
