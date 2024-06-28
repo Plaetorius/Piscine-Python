@@ -6,7 +6,7 @@ import sys
 
 
 def ft_rotate(image: np.array) -> np.array:
-
+    print(image)
     return image
 
 
@@ -17,7 +17,7 @@ if __name__ == "__main__":
             print(f"The shape of the image is: {array.shape} or "
                   f"({array.shape[0]}, {array.shape[1]})")
             print(array)
-            ft_rotate()
+            ft_rotate(array[:, :])
         else:
             print("Please a valid number of arguments")
     except Exception as e:
