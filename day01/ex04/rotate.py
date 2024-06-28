@@ -13,7 +13,11 @@ def ft_rotate(image: np.array) -> np.array:
 if __name__ == "__main__":
     try:
         if (len(sys.argv) == 2):
-            ft_rotate(ft_load(sys.argv[1]))
+            array = ft_zoom(ft_load(sys.argv[1]))
+            print(f"The shape of the image is: {array.shape} or "
+                  f"({array.shape[0]}, {array.shape[1]})")
+            print(array)
+            ft_rotate()
         else:
             print("Please a valid number of arguments")
     except Exception as e:
