@@ -1,7 +1,6 @@
 from PIL import Image
 import numpy as np
-from sys import argv
-
+import sys
 
 def ft_load(path: str) -> np.array:
     """
@@ -22,18 +21,18 @@ def ft_load(path: str) -> np.array:
     try:
         with Image.open(path) as img:
             array = np.array(img)
-            print(f"THe shape of the image is: {array.shape}")
+            print(f"The shape of the image is: {array.shape}")
             return array
     except FileNotFoundError:
         print("File not found!")
-        return []
+        return np.array([])
     except Exception as e:
         print(f"Error: {e}")
-        return []
+        return np.array([])
 
 
 if __name__ == "__main__":
-    if (len(argv) == 2):
-        print(ft_load(argv[1]))
+    if (len(sys.argv) == 2):
+        print(ft_load(sys.argv[1]))
     else:
         print("Please provide a file path")
