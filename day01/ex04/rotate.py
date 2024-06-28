@@ -49,6 +49,15 @@ def ft_zoom(image: np.array) -> np.array:
 
 
 def ft_rotate(image: np.array) -> np.array:
+    """
+    Rotate the image by 90 degrees.
+
+    Parameters:
+    image (np.array): The input image as a numpy array.
+
+    Returns:
+    np.array: The rotated image as a numpy array.
+    """
     rotated_image = np.zeros((image.shape))
     for i in range(image.shape[0]):
         for j in range(image.shape[1]):
