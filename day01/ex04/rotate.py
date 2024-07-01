@@ -68,7 +68,10 @@ def ft_rotate(image: np.array) -> np.array:
 if __name__ == "__main__":
     try:
         if (len(sys.argv) == 2):
-            array = ft_zoom(ft_load(sys.argv[1]))
+            base_image = ft_load(sys.argv[1])
+            if base_image == np.array([]):
+                raise FileNotFoundError("File not found!")
+            array = ft_zoom(base_image)
             print(f"The shape of the image is: {array.shape} or "
                   f"({array.shape[0]}, {array.shape[1]})")
             print(array)

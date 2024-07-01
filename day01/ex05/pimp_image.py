@@ -87,6 +87,8 @@ if __name__ == "__main__":
                 "GREY": ft_grey
             }
             base_image = ft_load(sys.argv[1])
+            if base_image == np.array([]):
+                raise FileNotFoundError("File not found!")
             for name, function in functions.items():
                 print("=" * 10 + name + "=" * 10)
                 modified = function(base_image.copy())
