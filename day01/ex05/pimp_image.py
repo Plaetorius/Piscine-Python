@@ -72,9 +72,20 @@ def ft_grey(array: np.array) -> np.array:
 if __name__ == "__main__":
     try:
         if len(sys.argv) == 2:
-            array = ft_grey(ft_load(sys.argv[1]))
-            # print(array)
-            plt.imshow(array)
-            plt.show()
+            functions = {
+                "INVERT": ft_invert, 
+                "RED": ft_red,
+                "GREEN": ft_green,
+                "BLUE": ft_blue,
+                "GREY": ft_grey
+            }
+            base_image = ft_load(sys.argv[1])
+            for name, function in functions.items():
+                print("=" * 10 + name + "=" * 10)
+                modified = function(base_image.copy())
+                print(f"The shape of the image is: {modified.shape}")
+                print(modified)
+                plt.imshow(modified)
+                plt.show()
     except Exception as e:
         print(f"Error: {e}")
