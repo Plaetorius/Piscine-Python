@@ -43,4 +43,3 @@ if __name__ == "__main__":
             print("Please provide a file path")
     except Exception as e:
         print(f"Error: {e}")
-
