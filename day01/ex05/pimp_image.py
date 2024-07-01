@@ -1,8 +1,8 @@
 from load_image import ft_load
 import matplotlib.pyplot as plt
-from PIL import Image
 import numpy as np
 import sys
+
 
 def ft_invert(array: np.array) -> np.array:
     """
@@ -16,6 +16,7 @@ def ft_invert(array: np.array) -> np.array:
     """
     return 255 - array
 
+
 def ft_red(array: np.array) -> np.array:
     """
     Filter the image to keep only the red channel.
@@ -24,10 +25,12 @@ def ft_red(array: np.array) -> np.array:
     array (np.array): The input image as a numpy array in RGB format.
 
     Returns:
-    np.array: The image with only the red channel visible, other channels set to 0.
+    np.array: The image with only the red channel visible, other channels set
+    to 0.
     """
     array[:, :, 1:] = 0
     return array
+
 
 def ft_green(array: np.array) -> np.array:
     """
@@ -37,10 +40,12 @@ def ft_green(array: np.array) -> np.array:
     array (np.array): The input image as a numpy array in RGB format.
 
     Returns:
-    np.array: The image with only the green channel visible, other channels set to 0.
+    np.array: The image with only the green channel visible, other channels
+    set to 0.
     """
     array[:, :, ::2] = 0
     return array
+
 
 def ft_blue(array: np.array) -> np.array:
     """
@@ -50,10 +55,12 @@ def ft_blue(array: np.array) -> np.array:
     array (np.array): The input image as a numpy array in RGB format.
 
     Returns:
-    np.array: The image with only the blue channel visible, other channels set to 0.
+    np.array: The image with only the blue channel visible, other channels set
+    to 0.
     """
     array[:, :, :2] = 0
     return array
+
 
 def ft_grey(array: np.array) -> np.array:
     """
@@ -73,7 +80,7 @@ if __name__ == "__main__":
     try:
         if len(sys.argv) == 2:
             functions = {
-                "INVERT": ft_invert, 
+                "INVERT": ft_invert,
                 "RED": ft_red,
                 "GREEN": ft_green,
                 "BLUE": ft_blue,
