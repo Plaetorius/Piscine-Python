@@ -5,18 +5,51 @@ import sys
 
 
 def life_graph(data: pd.DataFrame) -> None:
-    data = data.iloc[60]
-    print(data)
-    # data.plot(kind='line', x='year', color='blue')
-    # plt.title('France Life Expectancy Projections')
-    # plt.xlabel('Year')
-    # plt.ylabel('Life Expectancy')
+    """
+    Plots the life expectancy projections for France from a given dataset.
+
+    Parameters:
+    data (pd.DataFrame): DataFrame containing life expectancy data with
+    countries as rows and years as columns.
+
+    Raises:
+    ValueError: If the 'country' column is not present in the DataFrame.
+    KeyError: If 'France' is not present in the DataFrame's index.
+    TypeError: If the data types are not suitable for plotting.
+    """
+
+    if 'country' not in data.columns:
+        raise ValueError("DataFrame must have a 'country' column")
+    data.set_index('country', inplace=True)
+    try:
+        france_data = data.loc['France']
+    except KeyError:
+        raise KeyError("Data for 'France' not found in the dataset")
+
+    try:
+        years = france_data.index.astype(int)
+        life_expectancy = france_data.values
+        plt.plot(years, life_expectancy)
+        plt.title('France Life Expectancy Projections')
+        plt.xlabel('Year')
+        plt.ylabel('Life Expectancy')
+        plt.show()
+    except TypeError:
+        raise TypeError("Data types are not suitable for plotting")
+
 
 if __name__ == "__main__":
     try:
         if len(sys.argv) == 2:
-            file = life_graph(load(sys.argv[1]))
-            # print(f"Loading dataset of dimensions {file.shape}")
-            # print(file)
+            data = load(sys.argv[1])
+            life_graph(data)
+    except FileNotFoundError:
+        print("File not found! Please check the file path.")
+    except ValueError as ve:
+        print(f"ValueError: {ve}")
+    except KeyError as ke:
+        print(f"KeyError: {ke}")
+    except TypeError as te:
+        print(f"TypeError: {te}")
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"An unexpected error occurred: {e}")
