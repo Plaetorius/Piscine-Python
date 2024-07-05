@@ -71,9 +71,7 @@ if __name__ == "__main__":
     try:
         if len(sys.argv) == 2:
             data = load(sys.argv[1])
-        else:
-            data = load("population_total.csv")
-        life_graph(data)
+            life_graph(data)
     except FileNotFoundError:
         print("File not found! Please check the file path.")
     except ValueError as ve:
