@@ -4,7 +4,6 @@ from load_csv import load
 import sys
 
 
-#TODO parse CSV
 def parse_row(row: pd.Series):
     mult = {'K': 10e3, 'M': 10e6}
     parsed_values = []
@@ -14,12 +13,9 @@ def parse_row(row: pd.Series):
             n = float(nb) * mult[exp]
         parsed_values.append(n)
     return pd.Series(parsed_values, index=row.index)
-        
 
 
 def life_graph(data: pd.DataFrame) -> None:
-
-
     if 'country' not in data.columns:
         raise ValueError("DataFrame must have a 'country' column")
     data.set_index('country', inplace=True)
