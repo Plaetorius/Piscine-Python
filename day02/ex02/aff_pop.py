@@ -4,7 +4,17 @@ from load_csv import load
 import sys
 
 
-def parse_row(row: pd.Series):
+def parse_row(row: pd.Series) -> pd.Series:
+    """
+    Parses a row of a DataFrame, converting string representations of numbers with
+    suffixes 'K' (thousands) and 'M' (millions) to their respective numeric values.
+
+    Parameters:
+    row (pd.Series): A row of the DataFrame to be parsed.
+
+    Returns:
+    pd.Series: A new Series with parsed numeric values.
+    """
     mult = {'K': 10e3, 'M': 10e6}
     parsed_values = []
     for n in row.values:
@@ -16,6 +26,18 @@ def parse_row(row: pd.Series):
 
 
 def life_graph(data: pd.DataFrame) -> None:
+    """
+    Plots population projections for France and Belgium from a given DataFrame.
+    The DataFrame must contain a 'country' column and years as other columns.
+
+    Parameters:
+    data (pd.DataFrame): The DataFrame containing the data to be plotted.
+
+    Raises:
+    ValueError: If the DataFrame does not contain a 'country' column.
+    KeyError: If the data for 'France' or 'Belgium' is not found in the DataFrame.
+    TypeError: If the data types are not suitable for plotting.
+    """
     if 'country' not in data.columns:
         raise ValueError("DataFrame must have a 'country' column")
     data.set_index('country', inplace=True)
