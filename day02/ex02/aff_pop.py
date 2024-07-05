@@ -5,6 +5,17 @@ import sys
 
 
 #TODO parse CSV
+def parse_row(row: pd.Series):
+    mult = {'K': 10e3, 'M': 10e6}
+    parsed_values = []
+    for n in row.values:
+        if isinstance(n, str) and n[-1].upper() in mult:
+            nb, exp = n[0:-1], n[-1].upper()
+            n = float(nb) * mult[exp]
+        parsed_values.append(n)
+    return pd.Series(parsed_values, index=row.index)
+        
+
 
 def life_graph(data: pd.DataFrame) -> None:
 
@@ -14,16 +25,17 @@ def life_graph(data: pd.DataFrame) -> None:
     data.set_index('country', inplace=True)
     try:
         france_data = data.loc['France']
-        belgium_data = data.loc['Zambia']
+        belgium_data = data.loc['Belgium']
     except KeyError as e:
         raise KeyError(f"Data for {e.args[0]} not found in the dataset")
 
     try:
-        print(data)
-        years_1 = france_data.index.astype(int)
-        years_2 = belgium_data.index.astype(int)
-        pop_france = france_data.values
-        pop_belgium = belgium_data.values
+        parsed_france = parse_row(france_data)
+        parsed_belgium = parse_row(belgium_data)
+        years_1 = parsed_france.index.astype(int)
+        years_2 = parsed_belgium.index.astype(int)
+        pop_france = parsed_france.values
+        pop_belgium = parsed_belgium.values
         plt.plot(years_1, pop_france, label='France')
         plt.plot(years_2, pop_belgium, label='Belgium')
         plt.legend()
