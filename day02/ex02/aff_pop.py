@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 from load_csv import load
-import sys
 
 
 def parse_row(row: pd.Series) -> pd.Series:
@@ -69,10 +68,7 @@ def life_graph(data: pd.DataFrame) -> None:
 
 if __name__ == "__main__":
     try:
-        if len(sys.argv) == 2:
-            data = load(sys.argv[1])
-        else:
-            data = load("population_total.csv")
+        data = load("population_total.csv")
         life_graph(data)
     except FileNotFoundError:
         print("File not found! Please check the file path.")
