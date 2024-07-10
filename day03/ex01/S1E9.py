@@ -33,7 +33,6 @@ class Character(ABC):
                   file=sys.stderr)
             self.is_alive = True
 
-    @classmethod
     @abstractmethod
     def die():
         pass
@@ -51,7 +50,6 @@ class Stark(Character):
             is_alive (bool): the life status of the Stark. Defaults to True."""
         super().__init__(first_name, is_alive)
 
-    @classmethod
     def die(self):
         """Sets the is_alive attribute to False"""
         self.is_alive = False

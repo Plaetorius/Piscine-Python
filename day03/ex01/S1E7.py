@@ -3,6 +3,12 @@ import sys
 
 
 class Baratheon(Character):
+    """Baratheon class. Implementation of the abstract Character class with its
+    own constructor (not using Character's).
+
+    Args:
+        Character (ABC): The abstract Character class
+    """
     def __init__(self, first_name: str, is_alive: bool = True):
         """Constructor of the Baratheon class. Does checks on whether the given
         arguments are of correct type. If not, raises a TypeError and sets
@@ -25,21 +31,33 @@ class Baratheon(Character):
             print("is_alive must be bool. Setting it to True",
                   file=sys.stderr)
             self.is_alive = True
+        self.family_name = self.__class__.__name__
+        self.eyes = "brown"
+        self.hair = "dark"
 
     def __str__(self):
-        return f""
+        """Returns the string version of a Baratheon"""
+        return f"Vector: ('{self.family_name}', '{self.eyes}', '{self.hair}')"
 
     def __repr__(self):
-        return f""
+        """Returns the string representation of a Baratheon"""
+        return f"Vector: ('{self.family_name}', '{self.eyes}', '{self.hair}')"
 
-    @classmethod
-    def create_baratheon():
-        pass
+    def die(self):
+        """Sets the is_alive attribute to False"""
+        self.is_alive = False
 
 
 class Lannister(Character):
+    """Lannister class. Implementation of the abstract Character class with its
+    own constructor (not using Character's). Can create new Lannister using the
+    create_lannister() method.
+
+    Args:
+        Character (ABC): The abstract Character class
+    """
     def __init__(self, first_name: str, is_alive: bool = True):
-        """Constructor of the Character class. Does checks on whether the given
+        """Constructor of the Lannister class. Does checks on whether the given
         arguments are of correct type. If not, raises a TypeError and sets
         default values.
 
@@ -60,16 +78,34 @@ class Lannister(Character):
             print("is_alive must be bool. Setting it to True",
                   file=sys.stderr)
             self.is_alive = True
+        self.family_name = self.__class__.__name__
+        self.eyes = "blue"
+        self.hair = "light"
 
     def __str__(self):
-        return f""
+        """Returns the string version of a Lannister"""
+        return f"Vector: ('{self.family_name}', '{self.eyes}', '{self.hair}')"
 
     def __repr__(self):
-        return f""
+        """Returns the string representation of a Lannister"""
+        return f"Vector: ('{self.family_name}', '{self.eyes}', '{self.hair}')"
 
     @classmethod
-    def create_lannister():
-        pass
+    def create_lannister(cls, first_name: str, is_alive: bool = True):
+        """Creates a Lannister from the Class not from an Instance
+
+        Args:
+            first_name (str): The name of the Lannister to be created
+            is_alive (bool, optional): Life status. Defaults to True.
+
+        Returns:
+            Lannister: Instance of a Lannister with the given arguments
+        """
+        return cls(first_name, is_alive)
+
+    def die(self):
+        """Sets the is_alive attribute to False"""
+        self.is_alive = False
 
 
 def main():
@@ -89,7 +125,7 @@ def main():
     print("---")
     Jaine = Lannister.create_lannister("Jaine", True)
     print(f"Name : {Jaine.first_name, type(Jaine).__name__}, \
-        Alive : {Jaine.is_alive}")
+Alive : {Jaine.is_alive}")
 
 
 if __name__ == "__main__":
