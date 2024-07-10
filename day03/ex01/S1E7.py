@@ -1,4 +1,5 @@
 from S1E9 import Character
+import sys
 
 
 class Baratheon(Character):
@@ -15,12 +16,14 @@ class Baratheon(Character):
         if isinstance(first_name, str):
             self.first_name = first_name
         else:
-            print("first_name must be a string. Setting it to 'default'")
+            print("first_name must be a string. Setting it to 'default'",
+                  file=sys.stderr)
             self.first_name = 'default'
         if isinstance(is_alive, bool):
             self.is_alive = is_alive
         else:
-            print("is_alive must be bool. Setting it to True")
+            print("is_alive must be bool. Setting it to True",
+                  file=sys.stderr)
             self.is_alive = True
 
     def __str__(self):
@@ -44,21 +47,18 @@ class Lannister(Character):
             first_name (str): The name of the Character
             is_alive (bool, optional): The life status of the Character.
                 Defaults to True.
-
-        Raises:
-            TypeError: raised if first_name isn't a string. Sets first_name
-                to 'default'
-            TypeError: raised if is_alive isn't a bool. Sets is_alive to True.
         """
         if isinstance(first_name, str):
             self.first_name = first_name
         else:
-            print("first_name must be a string. Setting it to 'default'")
+            print("first_name must be a string. Setting it to 'default'",
+                  file=sys.stderr)
             self.first_name = 'default'
         if isinstance(is_alive, bool):
             self.is_alive = is_alive
         else:
-            print("is_alive must be bool. Setting it to True")
+            print("is_alive must be bool. Setting it to True",
+                  file=sys.stderr)
             self.is_alive = True
 
     def __str__(self):
