@@ -26,7 +26,7 @@ def load(path: str) -> pd.DataFrame:
         return pd.DataFrame([])
 
 
-if __name__ == "__main__":
+def main():
     try:
         if len(sys.argv) == 2:
             file = load(sys.argv[1])
@@ -34,3 +34,7 @@ if __name__ == "__main__":
             print(file)
     except Exception as e:
         print(f"Error: {e}")
+
+
+if __name__ == "__main__":
+    main()

@@ -37,14 +37,12 @@ def projection_life(income_data: pd.DataFrame, expectancy_data: pd.DataFrame):
             DataFrames. Detailed error: {te}")
 
 
-if __name__ == "__main__":
+def main():
     try:
-        # Load the data
         income_data = load(
             "income_per_person_gdppercapita_ppp_inflation_adjusted.csv")
         expectancy_data = load("life_expectancy_years.csv")
 
-        # Call the function to plot the data
         projection_life(income_data, expectancy_data)
     except FileNotFoundError as fnfe:
         print(f"FileNotFoundError: {fnfe}. Please check the file path.")
@@ -59,3 +57,7 @@ if __name__ == "__main__":
             pandas DataFrame.")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+
+
+if __name__ == "__main__":
+    main()

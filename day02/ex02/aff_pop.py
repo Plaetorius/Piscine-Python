@@ -66,7 +66,7 @@ def life_graph(data: pd.DataFrame) -> None:
         raise TypeError("Data types are not suitable for plotting")
 
 
-if __name__ == "__main__":
+def main():
     try:
         data = load("population_total.csv")
         life_graph(data)
@@ -80,3 +80,7 @@ if __name__ == "__main__":
         print(f"TypeError: {te}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+
+
+if __name__ == "__main__":
+    main()
