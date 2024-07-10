@@ -31,15 +31,14 @@ def ft_load(path: str) -> np.array:
         return np.array([])
 
 
+def main():
+    if (len(sys.argv) == 2):
+        array = ft_load(sys.argv[1])
+        print(f"The shape of the image is: {array.shape}")
+        print(array)
+    else:
+        print("Please provide a file path")
+
+
 if __name__ == "__main__":
-    try:
-        if (len(sys.argv) == 2):
-            array = ft_load(sys.argv[1])
-            if array == np.array([]):
-                raise FileNotFoundError("File not found!")
-            print(f"The shape of the image is: {array.shape}")
-            print(array)
-        else:
-            print("Please provide a file path")
-    except Exception as e:
-        print(f"Error: {e}")
+    main()

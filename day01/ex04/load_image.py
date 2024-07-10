@@ -31,10 +31,14 @@ def ft_load(path: str) -> np.array:
         return np.array([])
 
 
-if __name__ == "__main__":
+def main():
     if (len(sys.argv) == 2):
         array = ft_load(sys.argv[1])
         print(f"The shape of the image is: {array.shape}")
         print(array)
     else:
         print("Please provide a file path")
+
+
+if __name__ == "__main__":
+    main()

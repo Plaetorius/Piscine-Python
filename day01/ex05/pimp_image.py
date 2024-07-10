@@ -76,7 +76,7 @@ def ft_grey(array: np.array) -> np.array:
     return np.stack([grey, grey, grey], axis=-1).astype(np.uint8)
 
 
-if __name__ == "__main__":
+def main():
     try:
         if len(sys.argv) == 2:
             functions = {
@@ -98,3 +98,7 @@ if __name__ == "__main__":
                 plt.show()
     except Exception as e:
         print(f"Error: {e}")
+
+
+if __name__ == "__main__":
+    main()

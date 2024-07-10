@@ -123,7 +123,7 @@ def numpy_apply_limit(
     return bmi > limit
 
 
-if __name__ == "__main__":
+def main():
     try:
         print("PYTHON\nTest list different sizes (height)")
         height = [2.71, 1.15, 1.34]
@@ -211,3 +211,7 @@ if __name__ == "__main__":
             print(numpy_apply_limit(bmis, 26))
     except (TypeError, ValueError) as e:
         print(str(e))
+
+
+if __name__ == "__main__":
+    main()

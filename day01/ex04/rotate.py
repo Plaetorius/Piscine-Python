@@ -65,7 +65,7 @@ def ft_rotate(image: np.array) -> np.array:
     return rotated_image
 
 
-if __name__ == "__main__":
+def main():
     try:
         if (len(sys.argv) == 2):
             base_image = ft_load(sys.argv[1])
@@ -84,3 +84,7 @@ if __name__ == "__main__":
             print("Please a valid number of arguments")
     except Exception as e:
         print(f"Error: {e}")
+
+
+if __name__ == "__main__":
+    main()

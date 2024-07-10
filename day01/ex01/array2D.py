@@ -53,7 +53,7 @@ def slice_me_test(family: list, start: int, end: int) -> str:
     return output
 
 
-if __name__ == "__main__":
+def main():
     family = [[1.80, 78.4],
               [2.15, 102.7],
               [2.10, 98.5],
@@ -61,3 +61,7 @@ if __name__ == "__main__":
 
     print(slice_me(family, 0, 2))
     print(slice_me(family, 1, -2))
+
+
+if __name__ == "__main__":
+    main()
