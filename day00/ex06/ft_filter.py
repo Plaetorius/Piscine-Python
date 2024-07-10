@@ -5,7 +5,7 @@ Return an iterator yielding those items of iterable for which function(item)
 is true. If function is None, return the items that are true.'''
     # if not callable(function):
     #     return []
-    # filter() has a strang behaviour. When the passed object isn't callable,
+    # filter() has a strange behaviour. When the passed object isn't callable,
     # it returns a 'filter object', which is an iterator. I don't think that
     # we are supposed to reimplement that behaviour, but still, I added that
     # piece of code just in case.
