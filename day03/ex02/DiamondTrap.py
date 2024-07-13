@@ -54,6 +54,7 @@ class King(Baratheon, Lannister):
 
 
 def main():
+    """Main function. Run subjects tests"""
     Joffrey = King("Joffrey")
     print(Joffrey.__dict__)
     Joffrey.set_eyes("blue")
