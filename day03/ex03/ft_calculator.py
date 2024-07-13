@@ -1,12 +1,8 @@
-import sys
-
-
 # I changed 'object' to 'operand' because 'object' is also a Python keyword
-
 class Calculator():
     """Calculator class"""
     def __init__(self, values: list):
-        """Constuctor of the Calculator class. 
+        """Constuctor of the Calculator class.
 
         Args:
             values (list): the values to create the internal array/
@@ -37,7 +33,6 @@ class Calculator():
         print(self.array)
 
 
-
 def main():
     """Main function. Run subject's tests"""
     v1 = Calculator([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
@@ -54,6 +49,6 @@ def main():
     except Exception as e:
         print(e)
 
+
 if __name__ == "__main__":
     main()
-    
