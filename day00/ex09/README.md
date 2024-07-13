@@ -18,6 +18,11 @@ Build the source distribution and the wheel:
 python3 setup.py sdist bdist_wheel
 ```
 
+Install from the `dist` folder:
+```bash
+pip install dist/ft_package-0.0.1-py3-none-any.whl
+```
+
 ## Usage
 ```python
 from ft_package.core import count_in_list
