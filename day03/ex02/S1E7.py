@@ -11,8 +11,7 @@ class Baratheon(Character):
     """
     def __init__(self, first_name: str, is_alive: bool = True):
         """Constructor of the Baratheon class. Does checks on whether the given
-        arguments are of correct type. If not, raises a TypeError and sets
-        default values.
+        arguments are of correct type. If not, sets default values.
 
         Args:
             first_name (str): The name of the Character
@@ -58,8 +57,7 @@ class Lannister(Character):
     """
     def __init__(self, first_name: str, is_alive: bool = True):
         """Constructor of the Lannister class. Does checks on whether the given
-        arguments are of correct type. If not, raises a TypeError and sets
-        default values.
+        arguments are of correct type. If not, sets default values.
 
         Args:
             first_name (str): The name of the Character
