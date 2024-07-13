@@ -39,6 +39,7 @@ class Calculator():
 
 
 def main():
+    """Main function. Run subject's tests"""
     v1 = Calculator([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
     v1 + 5
     print("---")
