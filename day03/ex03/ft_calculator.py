@@ -4,6 +4,7 @@ import sys
 # I changed 'object' to 'operand' because 'object' is also a Python keyword
 
 class Calculator():
+    """Calculator class"""
     def __init__(self, values: list):
         """Constuctor of the Calculator class. 
 
