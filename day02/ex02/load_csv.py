@@ -17,12 +17,14 @@ def load(path: str) -> pd.DataFrame:
     Exception: other errors (corrupted / wrong file...)
     """
     try:
+        if (len(path.strip()) == 0):
+            raise FileNotFoundError("Empty path!")
         return pd.read_csv(path)
-    except FileNotFoundError:
-        print("File not found!")
+    except FileNotFoundError as e:
+        print(f"Error: {e}", file=sys.stderr)
         return pd.DataFrame([])
     except Exception:
-        print("Unsupported file!")
+        print(f"Error: Unsupported file format!", file=sys.stderr)
         return pd.DataFrame([])
 
 
@@ -32,6 +34,8 @@ def main():
             file = load(sys.argv[1])
             print(f"Loading dataset of dimensions {file.shape}")
             print(file)
+        else:
+            print(f"Usage: python3 {sys.argv[0]} path_to_csv")
     except Exception as e:
         print(f"Error: {e}")
 
